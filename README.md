@@ -28,7 +28,7 @@ Variations  :
 Given a KSQL Stream that has a field containing a valid JSON object:
 
 ```
-ksql> select * from s4 limit 1;
+ksql> select * from a_stream limit 1;
 1561530541681 | 101 | {"address":{"number":"82A","street":"George St","suburb":"Ashtead"},"customerId":"101"}
 Limit Reached
 Query terminated
@@ -37,7 +37,12 @@ Query terminated
 You can query/filter/transform the column using your familiar `jq` tool:
 
 ```
-ksql> select coltojson(customer, '{\\"id\\": .customerId, \\"suburb\\": .address.suburb}') as customerinfo from s4 limit 1;
+ksql> select coltojson(
+               customer, 
+               '{\\"id\\": .customerId, \\"suburb\\": .address.suburb}'
+             ) as customerinfo 
+      from a_stream 
+      limit 1;
 {"id":"101","suburb":"Ashtead"}
 Limit Reached
 Query terminated
