@@ -49,3 +49,6 @@ Query terminated
 ```
 
 NOTE: KSQL needs quite a lot of quote escaping for the text not to be considered a literal field name.
+
+## Limitations
+Only returns a scalar string result from jq - does not build additional KSQL rows based on array outputs or anything like that. PRs welcome!
