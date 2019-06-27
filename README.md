@@ -2,9 +2,9 @@
 A simple user defined function (UDF) that wraps Jq, allowing a column containing JSON data to be filtered and transformed
 
 ## Installation
-. Build the project with `./gradelw shadowJar` 
-. Copy the resulting jar to the `/ext` folder in your KSQL Server home directory
-. Restart the ksql-server process
+- Build the project with `./gradelw shadowJar` 
+- Copy the resulting jar to the `/ext` folder in your KSQL Server home directory
+- Restart the ksql-server process
 
 
 ## Testing availability
@@ -42,3 +42,5 @@ ksql> select coltojson(customer, '{\\"id\\": .customerId, \\"suburb\\": .address
 Limit Reached
 Query terminated
 ```
+
+NOTE: KSQL needs quite a lot of quote escaping for the text not to be considered a literal field name.
